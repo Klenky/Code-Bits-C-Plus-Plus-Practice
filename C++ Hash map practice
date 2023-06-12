@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int lengthRan = ransomNote.size();
+        int lengthMag = magazine.size();
+        
+        unordered_map <char, int>map;
+        for(int i = 0; i < lengthRan; i++){
+            map[ransomNote[i]]++;
+        }
+        for(int i = 0; i < lengthMag; i++){
+            map[magazine[i]]--;
+        }
+        for(auto temp: map){
+            if(temp.second > 0)
+            {
+                return false;
+            }
+            
+        }
+        return true;
+    }
+};
